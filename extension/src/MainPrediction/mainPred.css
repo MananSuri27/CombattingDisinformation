@@ -1,0 +1,7 @@
+.predictionContainer {
+    width: 90%;
+    height: 40%;
+    background: rgba(232, 232, 232, 0.75) !important;
+    border-radius: 32px !important;
+    margin-bottom: 1em;
+}
