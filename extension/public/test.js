@@ -1,6 +1,5 @@
 /* global Swal */
 /* global $ */
-/* global progressfunction*/
 
 chrome.runtime.onMessage.addListener(
     function(request, sender,) {
