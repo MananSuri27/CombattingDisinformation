@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { removeStopwords } from 'stopword';
+import { Logo } from './Logo/Logo';
 
 function App() {
   const [ url, setUrl ] = useState('');
@@ -11,6 +12,7 @@ function App() {
 	const [ newsLoading, setNewsLoading ] = useState(true);
   return (
     <div>
+      <Logo/>
     </div>
   );
 }
