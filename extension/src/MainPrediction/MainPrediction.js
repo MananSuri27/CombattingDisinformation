@@ -24,6 +24,11 @@ export const MainPrediction = ({ bias, fact, pred }) => {
 						</CircularProgressbarWithChildren>
                         </div>
 					</Grid>
+                    <Grid container item xs={6} justifyContent={"center"} style={{padding: "20px"}}>
+						<Grid item container xs={12} justifyContent={"center"}>
+                            <h1 className='mediaHeading'>Media bias</h1>
+                        </Grid>
+					</Grid>
                 </Grid>
 			</Paper>
 		</Grid>
