@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { removeStopwords } from 'stopword';
 import { Logo } from './Logo/Logo';
+import { MainPrediction } from './MainPrediction/MainPrediction';
 
 function App() {
 	const [ url, setUrl ] = useState('');
@@ -18,6 +19,7 @@ function App() {
 	return (
 		<div>
 			<Logo />
+      <MainPrediction bias={"left"} fact={"mixed"} pred={99}/>
 		</div>
 	);
 }
