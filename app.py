@@ -38,12 +38,24 @@ def predict():
     bias = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['bias'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else 0
 
     summary=0
+    newsdata=0
 
 
  
 
     if 'text' in json_.keys():       
         pred= classifier.predict_proba([json_['text']])
+        article=Article(json_['url'])
+        article.download()
+        article.parse()
+        article.nlp()
+
+        keywords = article.keywords
+        query_string = (" OR ").join(keywords)
+        news = requests.get("https://newsapi.org/v2/everything?apiKey=d4eb5b20793e4892bebe84ce789ff3f9&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post,reuters,bbc-news&pageSize=3&qInTitle=" + query_string)
+        newsdata = news.json()
+        print(newsdata)
+
     else:
         req = requests.get(json_['url'])
         text = BeautifulSoup(req.text, "html.parser").title.string.split("|")[0]
@@ -57,7 +69,7 @@ def predict():
 
         summary = article.summary
 
-    return jsonify({'pred': pred[0][1], 'fact':fact, 'bias':bias, 'summary':summary})
+    return jsonify({'pred': pred[0][1], 'fact':fact, 'bias':bias, 'summary':summary, 'newsdata': newsdata})
 
     
 

@@ -33,6 +33,24 @@ function App() {
 				})
 					.then((res) => res.json())
 					.then((res) => {
+						if (res.newsdata !== 0){
+							if (res.newsdata.articles.length >= 2) {
+								let article = res.newsdata.articles[1];
+								setStrap({
+									title: article.title.split('-')[0].split('|')[0],
+									url: article.url,
+									image: article.urlToImage
+								});
+							} else {
+								let article = res.newsdata.articles[0];
+								setStrap({
+									title: article.title.split('-')[0].split('|')[0],
+									url: article.url,
+									image: article.urlToImage
+								});
+							}
+						}
+						setNewsLoading(false);
 						setLoading(false);
 						setPredictionData({
 							bias: res.bias,
@@ -42,33 +60,33 @@ function App() {
 					});
 				setUrl(url);
 				setTitle(title);
-				let stringbuilder = key.join(' OR ');
+				// let stringbuilder = key.join(' OR ');
 
-				fetch(
-					'https://newsapi.org/v2/everything?apiKey=d4eb5b20793e4892bebe84ce789ff3f9&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post&pageSize=3&qInTitle=' +
-						stringbuilder
-				)
-					.then((res) => res.json())
-					.then((res) => {
-						if (res.articles) {
-							if (res.articles.length >= 2) {
-								let article = res.articles[1];
-								setStrap({
-									title: article.title.split('-')[0].split('|')[0],
-									url: article.url,
-									image: article.urlToImage
-								});
-							} else {
-								let article = res.articles[0];
-								setStrap({
-									title: article.title.split('-')[0].split('|')[0],
-									url: article.url,
-									image: article.urlToImage
-								});
-							}
-							setNewsLoading(false);
-						}
-					});
+				// fetch(
+				// 	'https://newsapi.org/v2/everything?apiKey=d4eb5b20793e4892bebe84ce789ff3f9&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post&pageSize=3&qInTitle=' +
+				// 		stringbuilder
+				// )
+				// 	.then((res) => res.json())
+				// 	.then((res) => {
+				// 		if (res.articles) {
+				// 			if (res.articles.length >= 2) {
+				// 				let article = res.articles[1];
+				// 				setStrap({
+				// 					title: article.title.split('-')[0].split('|')[0],
+				// 					url: article.url,
+				// 					image: article.urlToImage
+				// 				});
+				// 			} else {
+				// 				let article = res.articles[0];
+				// 				setStrap({
+				// 					title: article.title.split('-')[0].split('|')[0],
+				// 					url: article.url,
+				// 					image: article.urlToImage
+				// 				});
+				// 			}
+				// 			setNewsLoading(false);
+				// 		}
+				// 	});
 			});
 	}, []);
 	return (
