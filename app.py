@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
@@ -36,7 +35,7 @@ def predict():
     domain = urlparse(json_['url']).netloc
     domain_normalised = '.'.join(domain.split('.')[-2:])
     fact = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['fact'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else 0
-    bias = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['bias'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else NULL
+    bias = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['bias'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else 0
 
     summary=0
 
