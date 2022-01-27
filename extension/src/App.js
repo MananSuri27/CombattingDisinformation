@@ -95,7 +95,7 @@ function App() {
 			{!loading && (
 				<MainPrediction bias={predictionData.bias} fact={predictionData.fact} pred={predictionData.pred} />
 			)}
-			{!newsLoading && <Suggested title={strap.title} link={strap.url} image={strap.image} />}
+			{!newsLoading && strap && <Suggested title={strap.title} link={strap.url} image={strap.image} />}
 		</div>
 	);
 }
