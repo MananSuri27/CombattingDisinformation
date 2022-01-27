@@ -50,10 +50,12 @@ def predict():
         article.parse()
         article.nlp()
 
-        keywords = article.keywords
+        keywords = article.keywords[:3]
         query_string = (" OR ").join(keywords)
-        news = requests.get("https://newsapi.org/v2/everything?apiKey=d4eb5b20793e4892bebe84ce789ff3f9&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post,reuters,bbc-news&pageSize=3&qInTitle=" + query_string)
+        news = requests.get("https://newsapi.org/v2/everything?apiKey=d4eb5b20793e4892bebe84ce789ff3f9&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post&pageSize=3&qInTitle=" + query_string)
         newsdata = news.json()
+        if (newsdata["totalResults"] == 0):
+            newsdata = 0
         print(newsdata)
 
     else:
