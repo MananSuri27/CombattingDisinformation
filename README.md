@@ -51,9 +51,9 @@ Now at the top right pin our “Asatya” extension and enjoy the seamless exper
 - Manan Suri
 
 ## Attributions
-[Kaggle: Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset)
-[COVID19 Fake News Detection in English](https://github.com/diptamath/covid_fake_news)
-[Media Bias Fact Check](https://mediabiasfactcheck.com/)
+[Kaggle: Fake and real news dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset)<br/>
+[COVID19 Fake News Detection in English](https://github.com/diptamath/covid_fake_news)<br/>
+[Media Bias Fact Check](https://mediabiasfactcheck.com/)<br/>
 
 
 
