@@ -23,7 +23,7 @@ function App() {
 				const url = tabs[0].url;
 				const title = tabs[0].title.split('|')[0];
 				const key = removeStopwords(title.split(' '));
-				fetch('http://localhost:5000/predict', {
+				fetch('http://127.0.0.1:5000/predict', {
 					method: 'POST',
 					headers: {
 						Accept: 'application/json',
