@@ -4,7 +4,7 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import { useState } from 'react';
 
-export const MainPrediction = ({bias, fact, pred}) => {
+export const MainPrediction = ({bias, fact, pred,url}) => {
 	const [clicked, setClicked] = useState(false);
 	const colors = ["#ff0000", "#ffb300", "green"];
 	const circleColour = pred < 33 ? colors[0] : (pred < 66 ? colors[1] : colors[2]);
@@ -55,10 +55,28 @@ export const MainPrediction = ({bias, fact, pred}) => {
 						) :
 						(
 						<>
-							<Button style={{marginRight: "6px"}} color='success' onClick={() => {setClicked(true)}}>
+							<Button style={{marginRight: "6px"}} color='success' onClick={() => {
+								setClicked(true)
+								fetch('http://localhost:5000/feedback', {
+					            method: 'POST',
+					           headers: {
+						         'Accept': 'application/json', 
+						         'Content-Type': 'application/json' },
+					            body: JSON.stringify({ feedback:1, pred:pred, url:url})
+				                })
+								}}>
 								YES
 							</Button>
-							<Button color='error' onClick={() => {setClicked(true)}}>
+							<Button color='error' onClick={() => {
+								setClicked(true)
+								fetch('http://localhost:5000/feedback', {
+					            method: 'POST',
+					           headers: {
+						         'Accept': 'application/json', 
+						         'Content-Type': 'application/json' },
+					            body: JSON.stringify({ feedback:0, pred:pred, url:url})
+				                })
+								}}>
 								NO
 							</Button>
 						</>

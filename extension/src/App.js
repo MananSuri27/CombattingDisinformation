@@ -93,7 +93,7 @@ function App() {
 		<div>
 			<Logo />
 			{!loading && (
-				<MainPrediction bias={predictionData.bias} fact={predictionData.fact} pred={predictionData.pred} />
+				<MainPrediction bias={predictionData.bias} fact={predictionData.fact} pred={predictionData.pred} url={url} />
 			)}
 			{!newsLoading && strap && <Suggested title={strap.title} link={strap.url} image={strap.image} />}
 		</div>
