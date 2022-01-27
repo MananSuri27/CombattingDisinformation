@@ -6,7 +6,10 @@ from bs4 import BeautifulSoup
 import requests
 from flask_cors import CORS
 from newspaper import Article
+from tinydb import TinyDB
 
+
+db = TinyDB("feedback.json")
 
 
 
@@ -25,6 +28,16 @@ newsitesdata=pd.read_csv('./datasets/newsites.tsv', sep='\s+', header=0 )
 @app.route("/<name>")
 def home(name):
      return f'{name}'
+
+@app.route("/feedback",methods=['POST'])
+def feedback():
+    json_ = request.get_json()
+    url = json_['url']
+    label = round(json_['pred']) if json_['feedback']==1 else abs(round(json_['pred'])-1) 
+    db.insert(({'url': url,'label':label }))
+    return jsonify({'success':1})
+
+
 
 
 
