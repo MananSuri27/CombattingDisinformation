@@ -5,14 +5,13 @@ Asatya is a browser extension that bundles a suite of tools to fight disinformat
 ## [Kandi Kit (Openweaver)](https://kandi.openweaver.com/collections/techforgood2022/asatya--%7C-combatting-disinformation1)
 
 ## Usage
+### Within a Site
 ![Browser Extension Demo 1](https://media.discordapp.net/attachments/933085476041134103/936306003329298452/asatyamain.gif?width=540&height=629)
 <br/>
 <br/>
-<br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/>
+
+### Right Clicking a Link
+
 ![Browser Extension Demo 2](https://media.discordapp.net/attachments/933085476041134103/936306058828333066/rightclick.gif?width=540&height=475)
 
 ## Features
