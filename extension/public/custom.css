@@ -52,14 +52,14 @@
   display: none !important ;
 }
 
-.progress {
+.fc-progress {
   width: 150px !important ;
   height: 150px !important ;
   background: none !important ;
   position: relative !important ;
 }
 
-.progress::after {
+.fc-progress::after {
   content: "" !important ;
   width: 100% !important ;
   height: 100% !important ;
@@ -70,7 +70,7 @@
   left: 0 !important ;
 }
 
-.progress > span {
+.fc-progress > span {
   width: 50% !important ;
   height: 100% !important ;
   overflow: hidden !important ;
@@ -79,11 +79,11 @@
   z-index: 1 !important ;
 }
 
-.progress .progress-left {
+.fc-progress .fc-progress-left {
   left: 0 !important ;
 }
 
-.progress .progress-bar {
+.fc-progress .fc-progress-bar {
   width: 100% !important ;
   height: 100% !important ;
   background: none !important ;
@@ -93,7 +93,7 @@
   top: 0 !important ;
 }
 
-.progress .progress-left .progress-bar {
+.fc-progress .fc-progress-left .fc-progress-bar {
   left: 100% !important ;
   border-top-right-radius: 80px !important ;
   border-bottom-right-radius: 80px !important ;
@@ -102,11 +102,11 @@
   transform-origin: center left !important ;
 }
 
-.progress .progress-right {
+.fc-progress .fc-progress-right {
   right: 0 !important ;
 }
 
-.progress .progress-right .progress-bar {
+.fc-progress .fc-progress-right .fc-progress-bar {
   left: -100% !important ;
   border-top-left-radius: 80px !important ;
   border-bottom-left-radius: 80px !important ;
@@ -115,7 +115,7 @@
   transform-origin: center right !important ;
 }
 
-.progress .progress-value {
+.fc-progress .fc-progress-value {
   position: absolute !important ;
   top: 0 !important ;
   left: 0 !important ;
