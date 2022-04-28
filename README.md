@@ -1,6 +1,6 @@
 # CombattingDisinformation
 
-Asatya is a browser extension that bundles a suite of tools to fight disinformation on the web. These inform the user of a news report's reliability, media bias and objectivity using sophisticated Machine Learning Models.The extension summarises the report for the user's convenience, and suggests similar verified artciles.
+Asatya is a browser extension that bundles a suite of tools to fight disinformation on the web. These inform the user of a news report's reliability, media bias and objectivity using sophisticated Machine Learning Models.The extension summarises the report for the user's convenience, and suggests similar verified articles.
 
 
 ## Usage
