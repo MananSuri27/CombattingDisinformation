@@ -17,8 +17,7 @@ import openai
 import joblib
 
 
-openai_key = "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"
-serp_key = "e369f04b73192c573c3f8631ed44362da138c7b13dfa62acfa3761113907f90b"
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
