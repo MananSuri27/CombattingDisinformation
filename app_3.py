@@ -5,8 +5,8 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 import requests
 from flask_cors import CORS
+from newspaper import Article
 from tinydb import TinyDB
-from article import Article
 
 
 db = TinyDB("feedback.json")
@@ -45,38 +45,44 @@ def feedback():
 def predict():
     json_ = request.get_json()
 
+    domain = urlparse(json_['url']).netloc
+    domain_normalised = '.'.join(domain.split('.')[-2:])
+    fact = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['fact'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else 0
+    bias = newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised]['bias'].values[0] if newsitesdata.loc[newsitesdata['source_url_normalized']== domain_normalised].empty==False else 0
 
     summary=0
     newsdata=0
 
-    if 'text' in json_.keys():       
-        
-        article = Article(json_['url'])
-        pred = article.predict_fake_news()
 
-        news = article.get_similar_articles()
+ 
+
+    if 'text' in json_.keys():       
+        pred= classifier.predict_proba([json_['text']])
+        article=Article(json_['url'])
+        article.download()
+        article.parse()
+        article.nlp()
+
+        keywords = article.keywords[:3]
+        query_string = (" OR ").join(keywords)
+        news = requests.get("https://newsapi.org/v2/everything?apiKey=65756de0b9cc48b99bb5bcf64ceea474&sortBy=relevancy&sources=the-hindu,the-times-of-india,the-washington-post&pageSize=3&qInTitle=" + query_string)
         newsdata = news.json()
         if (newsdata["totalResults"] == 0):
             newsdata = 0
         print(newsdata)
 
-        fact = article.get_factuality()
-        bias = article.get_bias()
-
     else:
         req = requests.get(json_['url'])
         text = BeautifulSoup(req.text, "html.parser").title.string.split("|")[0]
         print(text)
-        
+        pred = classifier.predict_proba([text])
 
         article=Article(json_['url'])
+        article.download()
+        article.parse()
+        article.nlp()
 
-        pred = article.predict_fake_news()
-
-        summary = article.get_summary()
-
-        fact = article.get_factuality()
-        bias = article.get_bias()
+        summary = article.summary
 
     return jsonify({'pred': pred[0][1], 'fact':fact, 'bias':bias, 'summary':summary, 'newsdata': newsdata})
 
