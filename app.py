@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 from flask_cors import CORS
 from tinydb import TinyDB
-from article import Article
+from article_custom import Article
 
 
 db = TinyDB("feedback.json")
